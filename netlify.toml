@@ -1,5 +1,8 @@
-
+[build]
+    command = "npm nun build"
+    publish = "/build"
+    base = "/"
 [[redirects]]
-from = "/*"
-from = "/index.html"
-status = 200
+    from = "/*"
+    to = "/index.html"
+    status = 200
