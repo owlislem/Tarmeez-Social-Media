@@ -1,0 +1,321 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+@keyframes ldio-zxfv753wba {
+  0% { transform: rotate(0) }
+  100% { transform: rotate(360deg) }
+}
+.ldio-zxfv753wba div { box-sizing: border-box!important }
+.ldio-zxfv753wba > div {
+  position: absolute;
+  width: 68px;
+  height: 68px;
+  top: 16px;
+  left: 16px;
+  border-radius: 50%;
+  border: 8px solid #000;
+  border-color: #b6afb0 transparent #b6afb0 transparent;
+  animation: ldio-zxfv753wba 1s linear infinite;
+}
+.ldio-zxfv753wba > div:nth-child(2) { border-color: transparent }
+.ldio-zxfv753wba > div:nth-child(2) div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg);
+}
+.ldio-zxfv753wba > div:nth-child(2) div:before, .ldio-zxfv753wba > div:nth-child(2) div:after { 
+  content: "";
+  display: block;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  top: -8px;
+  left: 22px;
+  background: #b6afb0;
+  border-radius: 50%;
+  box-shadow: 0 60px 0 0 #b6afb0;
+}
+.ldio-zxfv753wba > div:nth-child(2) div:after { 
+  left: -8px;
+  top: 22px;
+  box-shadow: 60px 0 0 0 #b6afb0;
+}
+.loadingio-spinner-dual-ring-ph766dwmtnr {
+  width: 58px;
+  height: 58px;
+  display: inline-block;
+  overflow: hidden;
+  background: #f1f2f3;
+}
+.ldio-zxfv753wba {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(0.58);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldio-zxfv753wba div { box-sizing: content-box; }
+
+
+
+body {
+    height: 100vh;
+}
+a {
+    display: inline;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+.navClicked {
+    visibility: hidden;
+    display: none;
+    transition-duration: 3s;
+  }
+  .navClicked.active {
+     visibility: visible;
+    display: block;
+  }
+
+  .navClicked.disable {
+    visibility: hidden;
+    display: none;
+  }
+  .imgResp {
+    width: 100%;
+    height: auto;
+    object-fit: contain ;
+  }
+.specialForPost {
+    padding-inline: 0;
+}
+.specialForComments {
+  padding-inline: 0;
+
+}
+.overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    
+}
+.overlay.active {
+    display: block;
+
+}
+.login.active {
+    display: block;
+}
+.register.active {
+    display: block;
+}
+.post.active {
+  display: block;
+}
+.editPost.active {
+  display: block;
+}
+.logout-btn {
+    display: none;
+    right:96px ;
+    top:82px ;
+}
+.logout-btn.choosen {
+    display: none;
+ }
+.logout-btn.choosen.active {
+    display: block;
+}
+.wrapper-btnsB {
+    display: none;
+    visibility: hidden;
+}
+.beforeClicked {
+  display: none;
+} 
+
+.editButton {
+  position: absolute;
+  right: 25%;
+}
+.profileCard {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.contentProfile {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 15px;
+}
+.staticProfile {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 15px;
+}
+
+  @media (min-width :584px) {
+ 
+ 
+    
+  
+    .navButton {
+      display: block;
+      visibility: visible;
+    }
+    .navClicked {
+        visibility: hidden;
+        display: none;
+        transition-duration: 3s;
+      }
+      .navClicked.active {
+         visibility: visible;
+        display: block;
+      }
+    
+      .navClicked.disable {
+        visibility: hidden;
+        display: none;
+      }
+      .logout-btn {
+        display: none;
+        right:96px ;
+        top:82px ;
+    }
+    .logout-btn.choosen {
+        display: none;
+     }
+    .logout-btn.choosen.active {
+        display: block;
+    }
+    .wrapper-btnsB {
+      display: none;
+      visibility: hidden;
+  }
+    
+  }
+  
+  @media ( min-width : 814px ) {
+   .logout-btn {
+    position: absolute;
+    right: 5%;
+    top: 28%;
+   }
+  
+        .wrapper-btnsB {
+          display: flex;
+          visibility: visible;
+
+      }
+      .beforeClicked {
+        display: block;
+      } 
+      .wrapper-btnsB.connect{
+        display: none;
+      }
+      
+  
+    .navButton {
+      display: none;
+      visibility: hidden;
+    }
+    .logout-btn {
+      flex-direction: row-reverse !important ;
+      top : 15% !important
+;
+
+    }
+    .nameAfterConnect {
+      display: inline;
+      padding-block-end: 35px;
+    }
+    .userImageName {
+      position : absolute  ;
+      display: inline;
+      top: -11px;
+      right: 100px;
+      }
+      .editButton {
+        position: absolute;
+        right: 17%;
+      }
+
+  }
+  
+  @media ( min-width : 992px) {
+    .logout-btn {
+        position: absolute;
+        right: 5%;
+        top: 28%;
+       }
+
+   
+   
+    .navButton {
+      display: none;
+      visibility: hidden;
+    }
+    .editButton {
+      position: absolute;
+      right: 14%;
+    }
+    .profileCard {
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
+ 
+  }
+  
+  @media ( min-width : 1200px ) {
+    .logout-btn {
+        position: absolute;
+        right: 5%;
+        top: 28%;
+       }
+    body {
+
+      background-color: rgb(255, 255, 255);
+      z-index : 123499885;
+
+    }
+    
+    .wrapper-btns {
+      display: block;
+      margin: 15px;
+    }
+  
+    .navButton {
+      display: none;
+      visibility: hidden;
+    }
+    .imgResp {
+        margin-inline: auto;
+        width: 90%;
+        height: 500px;
+        object-fit: fill ;
+      }
+      .login {
+        margin: 0 auto;
+      }
+      .register {
+        margin: 0 auto;
+      }
+      .editButton {
+        position: absolute;
+        right: 12%;
+      }
+  }
+  

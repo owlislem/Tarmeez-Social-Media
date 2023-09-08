@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tarmeez.css">
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="./dist/output.css">
+    <link rel="stylesheet" href="ooutput.css">
+    <title>Tarmeez - Social media</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    
+    <div class="container relative w-2/3 mx-auto  p-5 shadow-xl rounded-md bg-white">
+        <nav class="navbar flex justify-between">
+            <div class="wrapper-link relative">
+                <h2 class="inline mr-8 font-bold text-cyan-900 text-2xl">Tarmeez</h2>
+                <a href="tarmeez.html" class="inline mr-3 text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700">Home</a>
+                <a href="" class="inline  text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700">Profile</a>
+            </div>
+            <i class="fa fa-solid fa-bars p-3 text-lg cursor-pointer text-slate-800 hover:text-slate-950 duration-500 ease-in-out navButton" ></i>
+            <div class="absolute  top-20 bg-white p-4  ease-in transition-all navClicked shadow-xl rounded-lg" style="right: 88px;">
+                <div class="wrapper-btns flex flex-col gap-4 " >
+                    <a href="" class="px-5 py-2 rounded-lg text-green-700 font-semibold border-2 border-green-700 afterClicked ">Log in</a>
+                    <a href="" class="px-5 py-2 rounded-lg text-green-700 font-semibold border-2 border-green-700 afterClicked ">Register</a>
+                </div>
+            </div>
+            <div class="log-user logout-btn flex gap-5 absolute py-2 right-20 ">
+            <button class=" logout-btn-btn  py-2 right-20 px-7  rounded-lg text-red-700 font-semibold border-2 border-red-700 bg-white ">Log out</button>
+            <div class="userImageName flex pt-3 mx-auto">
+            <img src="" alt=""  class="profileImage rounded-full  ml-4" style="width: 40px; height: 40px;">
+            <span class="nameAfterConnect block pl-5 px-7  text-black font-extrabold font-semibold "> @fsdfsd</span>
+            </div>
+            </div>
+            <div class="wrapper-btnsB flex gap-4" >
+                <a href="" class="px-5 py-2 rounded-lg text-green-700 font-semibold border-2 border-green-700 beforeClicked ">Log in</a>
+                <a href="" class="px-5 py-2 rounded-lg text-green-700 font-semibold border-2 border-green-700 beforeClicked">Register</a>
+            </div>
+        </nav>
+    </div>
+    <div class="container profileCard relative flex gap-5 w-2/3 mx-auto   p-5 shadow-xl rounded-md bg-white" style="margin-top: 40px; background-color: white; padding-inline: 35px;">
+        <div class="imageProfileSide" style="width: 160px; height: 160px;">
+            <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=626&ext=jpg&ga=GA1.1.150478350.1680020742&semt=sph" style="width: 160px; height: 160px;" alt="" class="imageProfile">
+        </div>
+        <div class="contentProfile">
+            <span class="emailProfile block font-bold text-lg">yarob.hm@gmail.com</span>
+            <span class="nameProfile block font-bold text-lg">Yarob</span>
+            <span class="usernameProfile block font-bold text-lg">Yarob99</span>
+        </div>
+        <div class="staticProfile">
+            <p class="numPosts "> <span  class="postCount"  style="color : rgb(156 163 175) ; font-size: 48px;">0</span> Posts</p>
+            <p class="numComments"> <span class="CommentsCount" style="color : rgb(156 163 175) ; font-size: 48px;">0</span> Comments</p>
+        </div>
+    </div>
+    <div class="container specialForPostinProfile relative w-2/3 mx-auto   p-5 shadow-xl rounded-md bg-white" style="margin-block-start: 20px;">
+    </div>
+
+    <div class="container login fixed inset-0 z-50 hidden ">
+        <div class="infos   flex flex-col justify-center align-middle mt-96 ">
+            <h1 class="mb-6 mx-auto text-2xl font-bold">Log In</h1>
+            <input type="email" class="emailUser-login w-80 mx-auto mb-7 h-11 pl-2 font-semibold " placeholder="Email" required>
+            <input type="password" class="passUser-login w-80 mx-auto h-11 pl-2 font-semibold " placeholder="Password" required>
+            <div class="btns flex gap-4 mx-auto mt-5">
+                <button class="px-5 py-2 rounded-lg bg-inherit-gray-600 text-white font-semibold border-2 cancel-btn">Cancel</button>
+                <button class="px-5 py-2 rounded-lg text-white bg-sky-700 font-semibold border-2 login-btn ">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container register fixed inset-0 z-50 hidden">
+        <div class="infos   flex flex-col justify-center align-middle mt-96 ">
+            <h1 class="mb-6 mx-auto text-2xl font-bold ">Register</h1>
+            <input type="name" class="nameUser-register w-80 mx-auto mb-7 h-11 pl-2 font-semibold" placeholder="Name" required>
+            <input type="text" class="User-register w-80 mx-auto mb-7 h-11 pl-2 font-semibold" placeholder="Username" required>
+            <input type="password" class="passUser-register w-80 mx-auto h-11 pl-2 font-semibold" placeholder="password" required>
+            <input type="file" class="imageImportRegister w-80 mx-auto mt-7 h-11 pl-2 font-semibold " placeholder="Choosen image" required>
+            <div class="btns flex gap-4 mx-auto mt-5">
+                <button class="px-5 py-2 rounded-lg bg-inherit-gray-600 text-white font-semibold border-2 cancel-btn">Cancel</button>
+                <button class="px-5 py-2 rounded-lg text-white bg-sky-700 font-semibold border-2 register-btn newAccount ">Register</button>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container postSide fixed inset-0 z-50 hidden ">
+        <div class="infos   flex flex-col justify-center align-middle mt-96 ">
+            <h1 class="mb-6 mx-auto text-2xl font-bold dynamicJob">Create Post</h1>
+            <input type="text" class="bodyTitle w-80 mx-auto mb-7 h-11 pl-2 font-semibold " placeholder="Title" required>
+            <input type="hidden" class="post-id-input">
+            <textarea class="bodyPost w-80 mx-auto h-20 pl-2 font-semibold resize-none  " placeholder="Body" required></textarea>
+            <input type="file" class="imageImport w-80 mx-auto mt-7 h-11 pl-2 font-semibold " placeholder="Choosen image" required>
+
+
+            <div class="btns flex gap-4 mx-auto mt-5">
+                <button class="px-5 py-2 rounded-lg bg-inherit-gray-600 text-white font-semibold border-2 cancel-btn-Post">Cancel</button>
+                <button class="px-5 py-2 rounded-lg text-white bg-sky-700 font-semibold border-2 createPost " onclick="createNewPost()">Post</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container deleteSure fixed inset-0 z-50 hidden ">
+        <div class="infos   flex flex-col justify-center align-middle mt-96 ">
+            <h1 class="mb-6 mx-auto text-2xl font-bold">Are You sure For Delete</h1>
+            <div class="btns flex gap-4 mx-auto mt-5">
+                <button class="px-5 py-2 rounded-lg bg-inherit-gray-600 text-white font-semibold border-2 cancel-btn-Delete" onclick="cancelDelete()">Cancel</button>
+                <input type="hidden" class="deleteInput">
+                <button class="px-5 py-2 rounded-lg text-white bg-red-700 font-semibold border-2 " onclick='sureDelete()'>Delete</button>
+            </div>
+        </div>
+    </div>
+
+   
+
+    
+
+    <div class="overlay bg-gray-700 opacity-75 hidden"></div>
+    <div class="addPost fixed bottom-6 right-20 cursor-pointer "><i class="fa-solid fa-plus p-8 bg-orange-500 rounded-full" ></i></div>
+
+</body>
+<script src="profileJsFinal.js"></script>
+</html>
