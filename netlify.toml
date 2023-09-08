@@ -1,3 +1,4 @@
 [[redirects]]
+from = "/*"
 from = "/tarmeez.html"
-status = 200git
+status = 200
