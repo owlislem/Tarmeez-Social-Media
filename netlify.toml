@@ -1,4 +1,5 @@
+
 [[redirects]]
 from = "/*"
-from = "/tarmeez.html"
+from = "/index.html"
 status = 200
