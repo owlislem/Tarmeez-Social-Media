@@ -315,21 +315,35 @@ function getPoste (idPage) {
         console.log(rep.body) ;
         console.log(rep.comments_count) ;
 
+        
+        let stringEmpty ='' ;
+        let user = getCurrentUser() ; 
+        let isMyPost = user != null && rep.author.id == user.id ;
+        let buttonContent = "" ;
+        if ( isMyPost ) {
+            buttonContent = 
+            `<div class="editButton absolute">
+                 <button class="editSpe font-semibold mr-4 mt-2 px-3 py-1 bg-slate-500 rounded-full text-white" onclick="editWarp('${encodeURIComponent(JSON.stringify(rep))}')">ediit</button>
+            </div>
+            <div class="deleteButton" absolute" style="right : 40%">
+            <button class="deleteSpe font-semibold mr-4 mt-2 px-3 py-1 bg-red-700 rounded-full text-white" style="background-color : rgb(185 28 28)" onclick="deleteWarp('${encodeURIComponent(JSON.stringify(rep))}')">delete</button>
+       </div>
+            `
+        } 
+
             specialForComments.innerHTML = 
         `  
         <h1 class="userWannaSeeComments font-bold" style="font-size: 44px;">${rep.author.username}' Posts</h1>
+        <div class="post w-full mb-5 bg-white" style="position: relative;">
             <div class="conatiner userInfoSide flex justify-between gap-2 p-4 border-b-2 border-gray-600 bg-slate-100 ">
-            <div class="whoEdit">
-                    <img src="${rep.author.profile_image}" class="rounded-full inline" style="width: 40px; height: 40px;">
-                    <span class="userName p-1 font-semibold">@${rep.author.username}</span>
+                 <div class="whoEdit">
+                         <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=626&ext=jpg&ga=GA1.1.150478350.1680020742&semt=sph" class="rounded-full inline" style="width: 40px; height: 40px;">
+                         <span class="userName p-1 font-semibold">@${rep.author.name}</span>
+                 </div>
+               ${buttonContent}
             </div>
-           <div class="editButton">
-                    <button class="edit font-semibold mr-4 mt-2 px-3 py-1 bg-slate-500 rounded-full text-white onclick="editWarp()">ediit</button>
-            </div>
-       </div>
-            
             <div class="contentUserSide p-4 border-b-2 border-gray-500">
-                <img src=${rep.image} class="imgResp " alt="">
+                <img src=${rep.image} class="imgResp cursor-pointer" alt="">
                 <div class="write py-4">
                 <span class="timeSharing text-gray-500">${rep.created_at}</span>
                 <h1 class="titlePost font-bold text-2xl">${rep.title == null ?   'null' : rep.title }</h1>
@@ -338,19 +352,19 @@ function getPoste (idPage) {
             </div>
             <div class="commentsSide flex gap-2 align-middle p-3 py-4 bg-white">
             <i class="fa-solid fa-pen"></i>
-            <p><span class="numberComments">(${rep.comments_count}) </span>comments</p>
+            <p><span class="numberComments">(${rep.comments_count})</span>comments</p>
             ${tagsOnce( reponse , tagsOnceUses)}
             </div>
             </div>
-           ${commentsOnce(reponse , commentsOnceUses)}
-           <div class="addingComment w-full relative">
-                    <input type="text" class="addComments w-full p-4 font-semibold" style="height: 40px; font-size: 15px;" placeholder="add comments here .." }>
-                    <div class="sentComment  absolute cursor-pointer " style="right: 10px; font-size: 22px; top: 0%; padding: 5px; background-color: rgb(0, 132, 248); " onclick="adding()">
-                    <i class="fa fa-regular fa-paper-plane" style="font-size: 22px;"></i>
-
-                </div>
-                </div>
-    </div>
+            ${commentsOnce(reponse , commentsOnceUses)}
+               <div class="addingComment w-full " style="width: 100%; position: absolute;">
+                        <input type="text" class="addComments absolute w-full p-4 font-semibold" style="height: 40px; font-size: 15px;" placeholder="add comments here .." }>
+                        <div class="sentComment  absolute cursor-pointer " style="right: 10px; font-size: 22px; top: 0%; padding: 5px;  " onclick="adding()">
+                        <i class="fa fa-regular fa-paper-plane" style="font-size: 22px;"></i>
+    
+                    </div>
+                    </div>
+        </div>
         `
     
     })
@@ -380,3 +394,19 @@ function editWarp() {
     editPost.classList.remove("hidden") ;
 
 }
+
+function getCurrentUser() {
+    let user = null ; 
+    const storageUser = localStorage.getItem("user") ;
+    if ( storageUser != null ) {
+        user = JSON.parse(storageUser)
+    }
+    return user ;
+}
+
+window.addEventListener("load" , ()=> {
+    setupUI() ;
+    const storageUser = localStorage.getItem("user") ;
+    const user = JSON.parse(storageUser) ;
+    nameAfterConnect.innerText = user.username  ;
+})

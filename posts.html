@@ -54,54 +54,68 @@
             </nav>
         </div>
        
-        <div class="container specialForComments w-2/3 mx-auto mt-16 px-32 rounded-lg shadow-xl">
-            <h1 class="userWannaSeeComments font-bold" style="font-size: 44px;">Islem hakim' Posts</h1>
-            <div class="post w-full mb-5 bg-white">
-                
+         
+      
+
+
+        <div class="container relative specialForComments w-2/3 mx-auto mt-32 px-32 rounded-lg shadow-xl" >
+            <h1 class="userWannaSeeComments font-bold" style="font-size: 44px;">${rep.author.username}' Posts</h1>
+            <div class="post w-full mb-5 bg-white" style="position: relative;">
                 <div class="conatiner userInfoSide flex justify-between gap-2 p-4 border-b-2 border-gray-600 bg-slate-100 ">
-                    <div class="whoEdit">
-                            <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=626&ext=jpg&ga=GA1.1.150478350.1680020742&semt=sph" class="rounded-full inline" style="width: 40px; height: 40px;">
-                            <span class="userName p-1 font-semibold">@${reponse.data.data[i].author.name}</span>
-                    </div>
-                   <div class="editButton">
-                            <button class="edit font-semibold mr-4 mt-2 px-3 py-1 bg-slate-500 rounded-full text-white">ediit</button>
-                    </div>
-               </div>
+                     <div class="whoEdit">
+                             <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=626&ext=jpg&ga=GA1.1.150478350.1680020742&semt=sph" class="rounded-full inline" style="width: 40px; height: 40px;">
+                             <span class="userName p-1 font-semibold">@${reponse.data.data[i].author.name}</span>
+                     </div>
+                    <div class="editButton">
+                                 <button class="edit font-semibold mr-4 mt-2 px-3 py-1 bg-slate-500 rounded-full text-white">ediit</button>
+                            </div>
+                                 <div class="deleteButton absolute" style="right : 40%">
+                                    <button class="deleteSpe font-semibold mr-4 mt-2 px-3 py-1 bg-red-700 rounded-full text-white" style="background-color : rgb(185 28 28)" onclick="deleteWarp('${encodeURIComponent(JSON.stringify(reponse.data.data[i]))}')">delete</button>
+            
+                     </div>
+                </div>
                 <div class="contentUserSide p-4 border-b-2 border-gray-500">
-                    <img src=${reponse.data.data[i].image} class="imgResp " alt="">
+                    <img src=${reponse.data.data[i].image} class="imgResp cursor-pointer" alt="">
                     <div class="write py-4">
-                    <span class="timeSharing text-gray-500">${reponse.data.data[i].created_at}</span>
-                    <h1 class="titlePost font-bold text-2xl">${reponse.data.data[i].title}</h1>
-                    <p class="contentPost mt-2">${reponse.data.data[i].body}</p>
+                    <span class="timeSharing text-gray-500">${rep.created_at}</span>
+                    <h1 class="titlePost font-bold text-2xl">${rep.title == null ?   'null' : rep.title }</h1>
+                    <p class="contentPost mt-2">${rep.body}</p>
                     </div>  
                 </div>
                 <div class="commentsSide flex gap-2 align-middle p-3 py-4 bg-white">
                 <i class="fa-solid fa-pen"></i>
-                <p><span class="numberComments">(${reponse.data.data[i].comments_count}) </span>comments</p>
-                ${tags(i , reponse , stringEmpty)}
+                <p><span class="numberComments">(${rep.comments_count})</span>comments</p>
+                ${tagsOnce( reponse , tagsOnceUses)}
                 </div>
                 </div>
-                <div class="comments w-full px-5">
-                    <div class="commetnsInfo flex justify-between gap-4 align-middle">
-                        <div class="whiEdit">
-                    <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=626&ext=jpg&ga=GA1.1.150478350.1680020742&semt=sph" class="rounded-full inline" style="width: 40px; height: 40px;">
-                    <span class="nameCommentaire font-bold pt-2   ">rashwani.ibrahiim</span>
-                </div>
-                    <div class="editButton">
-                        <button class="edit font-semibold mr-4 mt-2 px-3 py-1 bg-slate-500 rounded-full text-white">ediit</button>
-                    </div>
-                    </div>
-                    <p class="bodyComment mt-5 mb-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga modi non earum eum a illo ipsam similique ullam atque unde enim ratione, iusto delectus mollitia, blanditiis dignissimos molestias, iure facilis!</p>
-                </div>
-            
-                <div class="addingComment w-full relative">
-                    <input type="text" class="addComments w-full p-4 font-semibold" style="height: 40px; font-size: 15px;" placeholder="add comments here ..">
-                    <div class="sentComment  absolute cursor-pointer " style="right: 10px; font-size: 22px; top: 0%; padding: 5px;">
-                        <i class="fa fa-regular fa-paper-plane" style="font-size: 22px;"></i>
-
-                    </div>
-                </div>
+                ${commentsOnce(reponse , commentsOnceUses)}
+                   <div class="addingComment w-full " style="width: 100%; position: absolute;">
+                            <input type="text" class="addComments absolute w-full p-4 font-semibold" style="height: 40px; font-size: 15px;" placeholder="add comments here .." }>
+                            <div class="sentComment  absolute cursor-pointer " style="right: 10px; font-size: 22px; top: 0%; padding: 5px; background-color: rgb(0, 132, 248); " onclick="adding()">
+                            <i class="fa fa-regular fa-paper-plane" style="font-size: 22px;"></i>
+        
+                        </div>
+                        </div>
+            </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div class="container login fixed inset-0 z-50 hidden ">
             <div class="infos   flex flex-col justify-center align-middle mt-96 ">
                 <h1 class="mb-6 mx-auto text-2xl font-bold">Log In</h1>
@@ -148,10 +162,10 @@
     
     
         <div class="overlay bg-gray-700 opacity-75 hidden"></div>
-        <div class="addPost absolute bottom-6 right-20 cursor-pointer "><i class="fa-solid fa-plus p-8 bg-orange-500 rounded-full"></i></div>
+        <div class="addPost fixed bottom-6 cursor-pointer " style="position: fixed; right: 5px; bottom: 15px;"><i class="fa-solid fa-plus p-8 bg-orange-500 rounded-full"  ></i></div>
     
         
-    
+
 </body>
 <script src="tarmeezPost.js"></script>
 

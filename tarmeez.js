@@ -81,6 +81,8 @@ function setupUI() {
         addPost.style.display = "none"
     } else 
     {
+        loaderToggle(true) ;
+
         logoutBtn.classList.add("choosen") ;
         navClicked.classList.toggle("disable") ; 
         addEventElemnt(userAccount , "click" , ()=>{
@@ -91,9 +93,7 @@ function setupUI() {
         addPost.style.display = "block" ;
     }
 }
-window.addEventListener("load" , ()=> {
-    setupUI() ;
-})
+
 
 //API
 
@@ -122,13 +122,15 @@ const pageForTheFirst = 5 ;
 
 const succesLogin = document.querySelector(".succesLogin") ;
 const succesLogout = document.querySelector(".succesLogout") ;
+let emailUserLogin = document.querySelector(".emailUser-login").value;
+let passUserLogin = document.querySelector(".passUser-login").value ;
 
 addEventElemnt(loginBtn , "click" , ()=>{
     overlay.classList.remove("active") ;
     login.classList.remove("active") ;
     getPost()
-let emailUserLogin = document.querySelector(".emailUser-login").value;
-let passUserLogin = document.querySelector(".passUser-login").value ;
+    emailUserLogin = document.querySelector(".emailUser-login").value;
+     passUserLogin = document.querySelector(".passUser-login").value ;
     console.log(emailUserLogin , passUserLogin )
     loaderToggle(true) ;
     axios.post("https://tarmeezacademy.com/api/v1/login" ,
@@ -148,15 +150,22 @@ let passUserLogin = document.querySelector(".passUser-login").value ;
         setTimeout(()=>{
             succesLogin.style.display = "none" 
         } , 2000 )
-        
+        logoutBtn.classList.remove("active") ; 
+
     })
   .catch((e)=>{
-    loaderToggle(false) ;
-    alert(e) ;
-  })
+    loaderToggle(true) ;
+    standardMsg(e)  })
 
 
 
+})
+
+window.addEventListener("load" , ()=> {
+    setupUI() ;
+    const storageUser = localStorage.getItem("user") ;
+    const user = JSON.parse(storageUser) ;
+    nameAfterConnect.innerText = user.username  ;
 })
 
 
@@ -180,6 +189,10 @@ addEventElemnt(logoutBbtnBtn , "click" , ()=>{
             logoutBtn.classList.toggle("active")
         } )
         setupUI() ;
+        globalTrue = true ; 
+        getPost(pageForTheFirst , 1) ;
+        
+
 
 })
 
@@ -220,9 +233,9 @@ let formData = new FormData()
 
     })
     .catch((e)=>{
-        loaderToggle(false) ;
-        alert(e) ;
-    })
+        loaderToggle(true) ;
+        standardMsg(e)
+        })
     nameAfterConnect.innerText = userRegister ;
 
 })
@@ -286,7 +299,7 @@ function createNewPost() {
             
         })
         .catch((error)=>{
-            loaderToggle(false) ;
+            loaderToggle(true) ;
             let sp = document.querySelector(".s-p") ; 
             sp.innerText = error ; 
             succesUpload.style.display = "block" ;
@@ -317,7 +330,7 @@ function createNewPost() {
             
         })
         .catch((error)=>{
-            loaderToggle(false) ;
+            loaderToggle(true) ;
             let sp = document.querySelector(".s-p") ; 
             sp.innerText = error ; 
             succesUpload.style.display = "block" ;
@@ -328,9 +341,18 @@ function createNewPost() {
         })
     
     }
-    
+   
 
     
+}
+const standard = document.querySelector(".standard")
+function standardMsg(msg) {
+    standard.innerText = msg ;
+    standard.style.backgroundColor = "rgb(239 68 68)"
+    standard.style.display = "block" ;
+    setTimeout(()=>{
+        standard.style.display = "none" 
+    } , 2000 )
 }
 
 // infinty scrooling 
@@ -384,7 +406,7 @@ function getPost(pageForTheFirst=1 , currentPage=1  ) {
             <p class="contentPost mt-2">${reponse.data.data[i].body === null  ? "No Title" : reponse.data.data[i].body }</p>
             </div>  
         </div>
-        <div class="commentsSide flex gap-2 align-middle p-3 py-4 bg-white">
+        <div class="commentsSide flex gap-2 align-middle p-3 py-4 bg-white" onclick="postClicked(${reponse.data.data[i].id})">
         <i class="fa-solid fa-pen"></i>
         <p><span class="numberComments">(${reponse.data.data[i].comments_count === null ? "No Title": reponse.data.data[i].comments_count }) </span>comments</p>
         ${tags(i , reponse , stringEmpty)}
@@ -395,9 +417,8 @@ function getPost(pageForTheFirst=1 , currentPage=1  ) {
         
     })
         .catch((error)=> {
-        loaderToggle(false) ;
-        console.log(error)
-    })
+        loaderToggle(true) ;
+        standardMsg(e)    })
 }
 console.log(lastPage)
 const post = document.querySelectorAll(".post") ; 
@@ -474,8 +495,9 @@ function sureDelete() {
 
     })
     .catch((e)=>{
-        loaderToggle(false) ;
-        alert(e) ;
+
+        loaderToggle(true) ;
+        standardMsg(e)
     })
     
 

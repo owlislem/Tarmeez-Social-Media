@@ -166,9 +166,15 @@ a {
   gap: 15px;
 }
 
+.finalResponvie{
+  display: flex;
+ }
+
   @media (min-width :584px) {
  
- 
+ .finalResponvie{
+  display: inline;
+ }
     
   
     .navButton {
@@ -208,6 +214,9 @@ a {
   }
   
   @media ( min-width : 814px ) {
+    .finalResponvie{
+      display: inline;
+     }
    .logout-btn {
     position: absolute;
     right: 5%;
@@ -255,6 +264,9 @@ a {
   }
   
   @media ( min-width : 992px) {
+    .finalResponvie{
+      display: inline;
+     }
     .logout-btn {
         position: absolute;
         right: 5%;
@@ -280,6 +292,9 @@ a {
   }
   
   @media ( min-width : 1200px ) {
+    .finalResponvie{
+      display: inline;
+     }
     .logout-btn {
         position: absolute;
         right: 5%;

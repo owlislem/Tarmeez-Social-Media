@@ -1,3 +1,6 @@
+const urlParams = new URLSearchParams(window.location.search) ;
+const idPage = urlParams.get('postId') ; 
+
 function addEventElemnt ( elemnt , evnt , callback ) {
     if ( elemnt.length > 1 ) {
         for ( let i=0 ; i < elemnt.length ; i++) {
@@ -91,6 +94,9 @@ function setupUI() {
         addPost.style.display = "block" ;
     }
 }
+window.addEventListener("load" , ()=> {
+    setupUI() ;
+})
 
 const succesLogin = document.querySelector(".succesLogin") ;
 const succesLogout = document.querySelector(".succesLogout") ;
@@ -267,8 +273,12 @@ axios.get(`https://tarmeezacademy.com/api/v1/users/${id}`)
     CommentsCount.innerText = reponse.data.data.comments_count
     postCount.innerText =  reponse.data.data.posts_count
 })
-.catch((error)=>{
-    alert(error) ;
+.catch((error)=> {
+    standardMsg(error) ;
+    setTimeout(()=>{
+        window.location = "tarmeez.html"
+    } , 1000)
+
 })
 }
 function tags (i , reponse , stringEmpty) {
@@ -334,8 +344,11 @@ function getPostProfile(id) {
         }
         
     })
-        .then((error)=> {
-        console.log(error)
+        .catch((error)=> {
+        standardMsg(error) ;
+        setTimeout(()=>{
+            window.location = "tarmeez.html"
+        } ,1000)
     })
 }
 
@@ -344,8 +357,21 @@ function whereIgetTheId(idGet) {
     getPostProfile(idGet) ;
 }
 
-const urlParams = new URLSearchParams(window.location.search) ;
-const idPage = urlParams.get('postId') ; 
-
-
 whereIgetTheId(idPage) ; 
+
+
+window.addEventListener("load" , ()=> {
+    setupUI() ;
+    const storageUser = localStorage.getItem("user") ;
+    const user = JSON.parse(storageUser) ;
+    nameAfterConnect.innerText = user.username  ;
+})
+const standard = document.querySelector(".standard")
+function standardMsg(msg) {
+    standard.innerText = msg ;
+    standard.style.backgroundColor = "rgb(239 68 68)"
+    standard.style.display = "block" ;
+    setTimeout(()=>{
+        standard.style.display = "none" 
+    } , 2000 )
+}
